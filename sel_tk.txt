@@ -1,0 +1,263 @@
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class OpenBrowser {
+    public static void main(String[] args) {
+    	ChromeOptions opt = new ChromeOptions();
+    	opt.addArguments("--incognito");
+    	WebDriver dr= new ChromeDriver(opt);
+    	String s = "https://www.youtube.com";
+    	dr.get(s);
+    	dr.manage().window().fullscreen();
+    	try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	System.out.println(dr.getTitle());
+    	dr.close();
+
+    }
+}
+=======================
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Task {
+	public static void main(String[] args) {
+		WebDriver dr = new ChromeDriver();
+		WebDriver dr2 = new FirefoxDriver();
+		String s = "https://www.google.com";
+    	dr.get(s);
+    	String s2 = "https://mail.google.com/mail/u/0/";
+    	dr.get(s2);
+		dr.manage().window().maximize();
+		dr2.manage().window().minimize();
+		
+		System.out.println(dr.getTitle());
+		System.out.println(dr2.getCurrentUrl());
+		dr2.close();
+		if(s.equalsIgnoreCase(s2)) {
+			System.out.println("Pass");
+		}
+		else {
+			System.out.println("Fail");
+		}
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dr.close();
+	}
+}
+
+
+
+=============================
+
+package com.test;
+
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class De {
+	public static void main(String[] args) throws InterruptedException {
+	
+		WebDriver fd = new ChromeDriver();
+		
+		fd.get("https://www.google.com");
+		Thread.sleep(2000); 
+		
+		fd.get("https://workspace.google.com/intl/mr/gmail/");
+		
+		fd.navigate().forward();
+		fd.navigate().back();
+		System.out.println(fd.manage().window().getSize());
+		
+		Dimension d = new Dimension(500, 850);
+		fd.manage().window().setSize(d);
+
+		fd.navigate().refresh();
+		
+		fd.close();
+		
+	}
+}
+
+============================================
+
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class practice {
+	public static void main(String[] args) {
+		
+	WebDriver fd = new ChromeDriver();
+	
+	fd.get("https://www.practicetestautomation.com/practice-test-login/");
+	
+	fd.manage().window().maximize();
+	
+	try {
+		Thread.sleep(4000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	fd.close();
+	}
+}
+
+
+=======================================
+
+package com.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class practice {
+	public static void main(String[] args) {
+		
+	WebDriver fd = new ChromeDriver();
+	
+	fd.get("https://www.practicetestautomation.com/practice-test-login/");
+	
+	fd.manage().window().fullscreen();
+	
+	
+	fd.findElement(By.id("username")).click();
+	fd.findElement(By.id("password")).click();
+	
+	fd.findElement(By.id("username")).sendKeys("sfgdtudent");
+	fd.findElement(By.id("password")).sendKeys("Passfsword123");
+	
+	fd.findElement(By.id("username")).clear();
+	fd.findElement(By.id("password")).clear();
+	
+	fd.findElement(By.id("username")).sendKeys("student");
+	fd.findElement(By.id("password")).sendKeys("Password123");
+	
+	fd.findElement(By.id("submit")).click();
+
+	try {
+		Thread.sleep(2000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	fd.close();
+
+	}
+}
+
+==================================
+
+package com.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Webpage {
+	public static void main(String[] args) {
+	
+		WebDriver fd = new ChromeDriver();
+		
+		fd.get("https://www.practicetestautomation.com/practice-test-login/");
+		
+		fd.manage().window().fullscreen();
+		WebElement we = fd.findElement(By.id("username"));
+		
+		we.click();
+		we.sendKeys("adgfa");
+		we.clear();
+		we.sendKeys("student");
+		
+		WebElement we2 = fd.findElement(By.id("password"));
+		
+		we2.click();
+		we2.sendKeys("adgfa");
+		we2.clear();
+		we2.sendKeys("Password123");
+		
+		fd.findElement(By.id("submit")).click();
+	}
+}
+=====================================
+
+package com.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Webpage {
+	public static void main(String[] args) {
+	
+		WebDriver fd = new ChromeDriver();
+		
+		fd.get("https://www.practicetestautomation.com/practice-test-login/");
+		
+		fd.manage().window().maximize();
+		WebElement we = fd.findElement(By.id("username"));
+		WebElement msg = fd.findElement(By.id("error"));
+
+
+//		we.click();
+//		we.sendKeys("adgfa");
+//		fd.findElement(By.id("submit")).click();
+		
+		we.click();
+		we.sendKeys("student");
+		System.out.println(msg.getText());
+		
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement we2 = fd.findElement(By.id("password"));
+		
+		we2.click();
+		we2.sendKeys("adgfa");
+		fd.findElement(By.id("submit")).click();	
+		
+
+		
+		String s = we.getAttribute("value");
+		System.out.println(s);
+		System.out.println(we.isDisplayed());
+		System.out.println(we.isEnabled());
+		System.out.println(we.isSelected());
+		System.out.println(we.getLocation());
+		System.out.println(we.getSize());
+		System.out.println(we.getTagName());
+		System.out.println(msg.getText()); 
+		
+		
+		
+
+	}
+}
+==========================================
