@@ -1,0 +1,499 @@
+package com.test;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+
+public class TutorialPoint {
+
+	public static void main(String[] args) {
+		WebDriver t = new ChromeDriver();
+		t.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
+		t.manage().window().maximize();
+		
+		WebElement we = t.findElement(By.id("name"));
+		we.click();
+		we.sendKeys("User");
+		
+		WebElement we2 = t.findElement(By.id("email"));
+		we2.click();
+		we2.sendKeys("user@gmail.com");
+
+		t.findElement(By.xpath("//input[@id='name']//following::input[3]")).click();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement we3 = t.findElement(By.id("mobile"));
+		we3.click();
+		we3.sendKeys("12345678");
+		
+		WebElement we4 = t.findElement(By.id("subjects"));
+		we4.click();
+		we4.sendKeys("Science");
+		
+		WebElement we5 = t.findElement(By.name("dob"));
+		we5.click();
+		we5.sendKeys("12-11-2025");
+		
+		t.findElement(By.xpath("//input[@id='hobbies']")).click();
+		
+		t.findElement(By.xpath("//input[@id='hobbies']//following::input[1]")).click();
+		
+		t.findElement(By.xpath("//input[@id='hobbies']//following::input[2]")).click();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		t.findElement(By.name("picture")).sendKeys("C:\\Users\\CDAC\\Downloads\\monkey.jpg");
+
+		t.findElement(By.xpath("//textarea[@placeholder='Currend Address']")).sendKeys("Nashik");
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		
+		WebElement we6 = t.findElement(By.xpath("//select[@id='state']"));
+		Select s = new Select(we6);
+		s.selectByIndex(2);
+		
+		WebElement we7 = t.findElement(By.xpath("//select[@id='city']"));
+		Select s1 = new Select(we7);
+		s1.selectByContainsVisibleText("Agra");
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		t.findElement(By.xpath("//a[@href='login.php']")).click();
+		
+		
+
+	}
+
+}
+=========================================
+
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class NewTab {
+	public static void main(String[] args) {
+		WebDriver d = new ChromeDriver();
+		d.get("https://www.google.com/");
+		d.manage().window().maximize();
+		String pw = d.getWindowHandle();
+		d.switchTo().newWindow(WindowType.TAB);
+		String cw = d.getWindowHandle();
+		d.get("https://www.gmail.com/");
+		d.switchTo().window(pw);
+	}
+
+}
+===================================================
+
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class NewTab {
+	public static void main(String[] args) {
+		WebDriver d = new ChromeDriver();
+		d.get("https://www.google.com/");
+		d.manage().window().maximize();
+		String _1 = d.getWindowHandle();
+		d.switchTo().newWindow(WindowType.TAB);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String _2 = d.getWindowHandle();
+		d.get("https://www.gmail.com/");
+		d.switchTo().newWindow(WindowType.TAB);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String _3 = d.getWindowHandle();
+		d.get("https://www.youtube.com/");
+	
+		d.switchTo().window(_2);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		d.switchTo().window(_1);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		d.switchTo().window(_3);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		d.close();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		d.quit();
+	}
+
+}
+=========================================
+
+package com.test;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AlertHandling {
+	public static void main(String[] args) {
+		
+		WebDriver t = new ChromeDriver();
+		t.get("https://demo.automationtesting.in/Alerts.html");
+		t.manage().window().maximize();
+		t.findElement(By.xpath("//button[@class='btn btn-danger']")).click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Alert al = t.switchTo().alert();
+		System.out.println(al.getText());
+		al.accept();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		t.quit();
+		
+	}
+}
+
+========================================
+
+package com.test;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AlertHandling2 {
+	public static void main(String[] args) {
+		
+		WebDriver t = new ChromeDriver();
+		t.get("https://demo.automationtesting.in/Alerts.html");
+		t.manage().window().maximize();
+		t.findElement(By.xpath("//a[@href='#CancelTab']")).click();
+		t.findElement(By.xpath("//button[@class='btn btn-primary']")).click();
+		Alert al = t.switchTo().alert();
+		System.out.println(al.getText());
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		al.dismiss();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		t.quit();
+		
+	}
+}
+
+=====================================
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Headless {
+
+	public static void main(String[] args) {
+		ChromeOptions cc = new ChromeOptions();
+		cc.addArguments("incognito");
+		WebDriver dr = new ChromeDriver(cc);
+		dr.get("https://www.google.com");
+		System.out.println(dr.getTitle());
+		
+	}
+}
+==============================
+
+package com.test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+public class HeadlessFire {
+	public static void main(String[] args) {
+	FirefoxOptions f = new FirefoxOptions();
+	f.addArguments("--headless");
+	WebDriver we = new FirefoxDriver(f);
+	we.get("https://www.youtube.com");
+	System.out.println(we.getTitle());
+	}
+}
+
+================================
+
+package com.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ActionClass {
+	public static void main(String[] args) {
+		WebDriver w = new ChromeDriver();
+		w.get("https://accounts.saucelabs.com/am/XUI/#login");
+		w.manage().window().maximize();
+		System.out.println(w.getTitle());
+		
+		WebElement e  = w.findElement(By.id("idToken1"));
+		Actions a = new Actions(w);
+		a.moveToElement(e).contextClick().build().perform();
+		e.sendKeys("Kellya");
+		a.doubleClick(e).build().perform();
+	}
+
+}
+==================================
+
+package com.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class TutorialPoint {
+
+	public static void main(String[] args) {
+		WebDriver t = new ChromeDriver();
+		t.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
+		t.manage().window().maximize();
+		
+		WebElement we = t.findElement(By.id("name"));
+		we.click();
+		we.sendKeys("User");
+		
+		WebElement we2 = t.findElement(By.id("email"));
+		we2.click();
+		we2.sendKeys("user@gmail.com");
+
+		t.findElement(By.xpath("//input[@id='name']//following::input[3]")).click();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement we3 = t.findElement(By.id("mobile"));
+		we3.click();
+		we3.sendKeys("12345678");
+		
+		WebElement we4 = t.findElement(By.id("subjects"));
+		we4.click();
+		we4.sendKeys("Science");
+		
+		WebElement we5 = t.findElement(By.name("dob"));
+		we5.click();
+		we5.sendKeys("12-11-2025");
+		
+		t.findElement(By.xpath("//input[@id='hobbies']")).click();
+		
+		t.findElement(By.xpath("//input[@id='hobbies']//following::input[1]")).click();
+		
+		t.findElement(By.xpath("//input[@id='hobbies']//following::input[2]")).click();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		t.findElement(By.name("picture")).sendKeys("C:\\Users\\CDAC\\Downloads\\monkey.jpg");
+
+		t.findElement(By.xpath("//textarea[@placeholder='Currend Address']")).sendKeys("Nashik");
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement we6 = t.findElement(By.xpath("//select[@id='state']"));
+		WebElement msg = t.findElement(By.xpath("//select[@id='state']"));
+		Select s = new Select(we6);
+		s.selectByIndex(2);
+		System.out.println(msg.getText());
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement we7 = t.findElement(By.xpath("//select[@id='city']"));
+		WebElement msg2 = t.findElement(By.xpath("//select[@id='city']"));
+		Select s1 = new Select(we7);
+		s1.selectByContainsVisibleText("Agra");
+		System.out.println(msg2.getText());
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		t.findElement(By.xpath("//a[@href='login.php']")).click();
+		
+		
+
+	}
+
+}
+===========================
+
+package com.test;
+
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import com.google.common.io.Files;
+
+public class DragDrop2 {
+    public static void main(String[] args) throws IOException {
+        WebDriver w = new ChromeDriver();
+        w.get("https://demo.guru99.com/test/drag_drop.html");
+        w.manage().window().maximize();
+
+        WebElement d= w.findElement(By.id("credit2"));
+        WebElement d2 = w.findElement(By.id("bank"));
+
+        WebElement d3= w.findElement(By.id("fourth"));
+        WebElement d4 = w.findElement(By.id("amt7"));
+
+        Actions a1 = new Actions(w); 
+        a1.dragAndDrop(d, d2).build().perform();        
+
+        Actions a2 = new Actions(w); 
+        a2.dragAndDrop(d3, d4).build().perform();
+        
+        File screenshot = ((TakesScreenshot)w).getScreenshotAs(OutputType.FILE);
+        Files.copy(screenshot, new File("C:\\Users\\CDAC\\Desktop\\TK-ST\\src.png"));
+        
+    }
+}
+
+==========================================
+
+package com.test;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.google.common.io.Files;
+
+public class Screenshot {
+	public static void main(String[] args) throws IOException {
+		WebDriver s = new ChromeDriver();
+		s.get("https://demo.guru99.com/test/drag_drop.html");
+		s.manage().window().maximize();
+		File screenshot = ((TakesScreenshot)s).getScreenshotAs(OutputType.FILE);
+		Files.copy(screenshot, new File("C:\\Users\\CDAC\\Desktop\\TK-ST\\src1.png"));
+	}
+
+}
